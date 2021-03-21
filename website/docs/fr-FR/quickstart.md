@@ -33,35 +33,128 @@ app.mount('#app')
 
 L'exemple ci-dessus importe Element Plus entièrement. Notez que les fichiers CSS doivent être importés séparément.
 
-#### À la demande
+#### On demand in Vue CLI
 
-Grâce au [babel-plugin-import](https://github.com/ant-design/babel-plugin-import), nous pouvons importer uniquement les composants désirés, rendant ainsi le projet plus léger.
+With the help of [babel-plugin-import](https://github.com/ant-design/babel-plugin-import), we can import components we actually need, making the project smaller than otherwise.
 
-Tout d'abord, installez babel-plugin-import:
+Firstly，install babel-plugin-import:
 
 ```bash
-npm install babel-plugin-import -D
+$ npm install babel-plugin-import -D
 ```
 
-Puis éditez babel.config.js:
+or if you use `Yarn` as package manager
 
-```js
-module.exports = {
-  plugins: [
-    [
-      "import",
-      {
-        libraryName: 'element-plus',
+```bash
+$ yarn add babel-plugin-import -D
+```
+
+
+Then edit babel.config.js:
+
+- import `.scss` style
+
+  :::warning
+  Please make sure that `sass` and `sass-loader` dependencies have been installed and import `element-plus/packages/theme-chalk/src/base.scss` in the entry file.
+  :::
+
+  ```js
+  module.exports = {
+    plugins: [
+      [
+        "import",
+        {
+          libraryName: 'element-plus',
+          customStyleName: (name) => {
+            name = name.slice(3)
+            return `element-plus/packages/theme-chalk/src/${name}.scss`;
+          },
+        },
+      ],
+    ],
+  };
+  ```
+
+- import `.css` style
+
+  ```js
+  module.exports = {
+    plugins: [
+      [
+        "import",
+        {
+          libraryName: 'element-plus',
+          customStyleName: (name) => {
+            return `element-plus/lib/theme-chalk/${name}.css`;
+          },
+        },
+      ],
+    ],
+  };
+  ```
+
+#### On demand in Vite
+
+Firstly，install [vite-plugin-importer](https://github.com/ajuner/vite-plugin-importer):
+
+```bash
+$ npm install vite-plugin-importer -D
+```
+
+or if you use `Yarn` as package manager
+
+```bash
+$ yarn add vite-plugin-importer -D
+```
+
+Then edit vite.config.js:
+
+- import `.scss` style
+
+  :::warning
+  Please make sure that the `sass` dependency have been installed and import `element-plus/packages/theme-chalk/src/base.scss` in the entry file.
+  :::
+
+  ```js
+  import { defineConfig } from 'vite'
+  import vue from '@vitejs/plugin-vue'
+  import usePluginImport from 'vite-plugin-importer'
+  
+  export default defineConfig({
+    plugins: [
+      vue(),
+      usePluginImport({
+        libraryName: "element-plus",
+        libraryDirectory: "es",
         customStyleName: (name) => {
-          // En raison de l'existence de "customStyleName", "style : true" ne sera pas efficace.
-          // Donc si vous voulez utiliser le fichier source `.scss`, il vous suffit de remplacer le nom de l'extension `.css` par `.scss`.
+          name = name.slice(3)
+          return `element-plus/packages/theme-chalk/src/${name}.scss`;
+        },
+      })
+    ]
+  })
+  ```
+
+- import `.css` style
+
+  ```js
+  import { defineConfig } from 'vite'
+  import vue from '@vitejs/plugin-vue'
+  import usePluginImport from 'vite-plugin-importer'
+  
+  export default defineConfig({
+    plugins: [
+      vue(),
+      usePluginImport({
+        libraryName: "element-plus",
+        libraryDirectory: "es",
+        customStyleName: (name) => {
           return `element-plus/lib/theme-chalk/${name}.css`;
         },
-      },
-    ],
-  ],
-};
-```
+      })
+    ]
+  })
+  ```
 
 Ensuite, si vous n'avez besoin que de Button et Select, éditez main.js comme suit:
 
@@ -69,6 +162,8 @@ Ensuite, si vous n'avez besoin que de Button et Select, éditez main.js comme su
 import { createApp } from 'vue'
 import { ElButton, ElSelect } from 'element-plus';
 import App from './App.vue';
+// If you want to use the .scss style file, you need to import the base.scss file
+// import 'element-plus/packages/theme-chalk/src/base.scss'
 
 const app = createApp(App)
 app.component(ElButton.name, ElButton);
@@ -87,6 +182,9 @@ Exemple complet (liste complète des composants dans [reference](https://github.
 ```javascript
 import { createApp } from 'vue'
 import App from './App.vue';
+// If you want to use the .scss style file, you need to import the base.scss file
+// import 'element-plus/packages/theme-chalk/src/base.scss'
+
 import {
   ElAlert,
   ElAside,
@@ -294,6 +392,8 @@ Import partiel d'Element：
 import { createApp } from 'vue'
 import { ElButton } from 'element-plus';
 import App from './App.vue';
+// If you want to use the .scss style file, you need to import the base.scss file
+// import 'element-plus/packages/theme-chalk/src/base.scss'
 
 const app = createApp(App)
 app.config.globalProperties.$ELEMENT = option

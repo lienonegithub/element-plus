@@ -33,7 +33,7 @@ app.mount('#app')
 
 以上代码便完成了 Element Plus 的引入。需要注意的是，样式文件需要单独引入。
 
-#### 按需引入
+#### Vue CLI 按需引入
 
 借助 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)，我们可以只引入需要的组件，以达到减小项目体积的目的。
 
@@ -51,23 +51,109 @@ $ yarn add babel-plugin-import -D
 
 然后，将 babel.config.js 修改为：
 
-```js
-module.exports = {
-  plugins: [
-    [
-      "import",
-      {
-        libraryName: 'element-plus',
+- 引入 `.scss` 样式
+
+  :::warning
+  请确保已经安装了 `sass` 和 `sass-loader` 依赖并将 `element-plus/packages/theme-chalk/src/base.scss` 文件在入口文件中引入
+  :::
+  
+  ```js
+  module.exports = {
+    plugins: [
+      [
+        "import",
+        {
+          libraryName: 'element-plus',
+          customStyleName: (name) => {
+            name = name.slice(3)
+            return `element-plus/packages/theme-chalk/src/${name}.scss`;
+          },
+        },
+      ],
+    ],
+  };
+  ```
+
+- 引入 `.css` 样式
+  
+  ```js
+  module.exports = {
+    plugins: [
+      [
+        "import",
+        {
+          libraryName: 'element-plus',
+          customStyleName: (name) => {
+            return `element-plus/lib/theme-chalk/${name}.css`;
+          },
+        },
+      ],
+    ],
+  };
+  ```
+
+#### Vite 按需引入
+
+首先，安装 [vite-plugin-importer](https://github.com/ajuner/vite-plugin-importer):
+
+```bash
+$ npm install vite-plugin-importer -D
+```
+
+或者
+
+```bash
+$ yarn add vite-plugin-importer -D
+```
+
+然后，将 vite.config.js 修改为：
+
+- 引入 `.scss` 样式
+
+  :::warning
+  请确保已经安装了 `sass` 依赖并将 `element-plus/packages/theme-chalk/src/base.scss` 文件在入口文件中引入
+  :::
+
+  ```js
+  import { defineConfig } from 'vite'
+  import vue from '@vitejs/plugin-vue'
+  import usePluginImport from 'vite-plugin-importer'
+  
+  export default defineConfig({
+    plugins: [
+      vue(),
+      usePluginImport({
+        libraryName: "element-plus",
+        libraryDirectory: "es",
         customStyleName: (name) => {
-          // 由于 customStyleName 在配置中被声明的原因，`style: true` 会被直接忽略掉，
-          // 如果你需要使用 scss 源文件，把文件结尾的扩展名从 `.css` 替换成 `.scss` 就可以了
+          name = name.slice(3)
+          return `element-plus/packages/theme-chalk/src/${name}.scss`;
+        },
+      })
+    ]
+  })
+  ```
+
+- 引入 `.css` 样式
+
+  ```js
+  import { defineConfig } from 'vite'
+  import vue from '@vitejs/plugin-vue'
+  import usePluginImport from 'vite-plugin-importer'
+  
+  export default defineConfig({
+    plugins: [
+      vue(),
+      usePluginImport({
+        libraryName: "element-plus",
+        libraryDirectory: "es",
+        customStyleName: (name) => {
           return `element-plus/lib/theme-chalk/${name}.css`;
         },
-      },
-    ],
-  ],
-};
-```
+      })
+    ]
+  })
+  ```
 
 接下来，如果你只希望引入部分组件，比如 Button 和 Select，那么需要在 main.js 中写入以下内容：
 
@@ -75,6 +161,8 @@ module.exports = {
 import { createApp } from 'vue'
 import { ElButton, ElSelect } from 'element-plus';
 import App from './App.vue';
+// 如果要使用.scss样式文件，则需要引入base.scss文件
+// import 'element-plus/packages/theme-chalk/src/base.scss'
 
 const app = createApp(App)
 app.component(ElButton.name, ElButton);
@@ -93,6 +181,9 @@ app.mount('#app')
 ```javascript
 import { createApp } from 'vue'
 import App from './App.vue';
+// 如果要使用.scss样式文件，则需要引入base.scss文件
+// import 'element-plus/packages/theme-chalk/src/base.scss'
+
 import {
   ElAlert,
   ElAside,
@@ -300,6 +391,8 @@ app.use(ElementPlus, { size: 'small', zIndex: 3000 });
 import { createApp } from 'vue'
 import { ElButton } from 'element-plus';
 import App from './App.vue';
+// 如果要使用.scss样式文件，则需要引入base.scss文件
+// import 'element-plus/packages/theme-chalk/src/base.scss'
 
 const app = createApp(App)
 app.config.globalProperties.$ELEMENT = option
