@@ -85,9 +85,18 @@ const showMessage = (options: any) => {
     doClose: () => void
   }>
 
+  for (const prop in options) {
+    if (options.hasOwnProperty(prop) && !vm.$props.hasOwnProperty(prop)) {
+      vm[prop] = options[prop]
+    }
+  }
+
   if (isVNode(options.message)) {
+    options.message = null
     // Override slots since message is vnode type.
     instance.slots.default = () => [options.message]
+  } else {
+    delete instance.slots.default
   }
   // change visibility after everything is settled
   vm.visible = true
