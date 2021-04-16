@@ -1,6 +1,6 @@
 import { App } from 'vue'
 import Empty from './src/index.vue'
-import type { SFCWithInstall } from '@element-plus/utils/types'
+import type { SFCWithInstall } from '@mtui/utils/types'
 
 Empty.install = (app: App): void => {
   app.component(Empty.name, Empty)

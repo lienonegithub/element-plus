@@ -1,11 +1,11 @@
 <template>
-  <div ref="scrollbar" class="el-scrollbar">
+  <div ref="scrollbar" class="mt-scrollbar">
     <div
       ref="wrap"
       :class="[
         wrapClass,
-        'el-scrollbar__wrap',
-        native ? '' : 'el-scrollbar__wrap--hidden-default',
+        'mt-scrollbar__wrap',
+        native ? '' : 'mt-scrollbar__wrap--hidden-default',
       ]"
       :style="style"
       @scroll="handleScroll"
@@ -13,7 +13,7 @@
       <component
         :is="tag"
         ref="resize"
-        :class="['el-scrollbar__view', viewClass]"
+        :class="['mt-scrollbar__view', viewClass]"
         :style="viewStyle"
       >
         <slot></slot>
@@ -26,13 +26,13 @@
   </div>
 </template>
 <script lang="ts">
-import { addResizeListener, removeResizeListener } from '@element-plus/utils/resize-event'
-import { toObject } from '@element-plus/utils/util'
+import { addResizeListener, removeResizeListener } from '@mtui/utils/resize-event'
+import { toObject } from '@mtui/utils/util'
 import { computed, defineComponent, nextTick, onBeforeUnmount, onMounted, provide, ref } from 'vue'
 import Bar from './bar.vue'
 
 export default defineComponent({
-  name: 'ElScrollbar',
+  name: 'MtScrollbar',
   components: { Bar },
   props: {
     native: {

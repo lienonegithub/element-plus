@@ -1,5 +1,111 @@
 ## Changelog
 
+### 1.0.2-beta.40
+*2021-04-14*
+
+#### Bug fixes
+
+- fix(table): page resize event not monitor (#1790)
+- fix(time-picker): added popperRef in picker to Fix issue #1809 (#1812)
+- fix(select): fix select with filterable has wrong dropdown options (#1811)
+- fix(table): fix bug of table crash under complex data (#1805)
+- fix(alert.scss carousel.scss switch.scss): v-enter(vue2) to v-enter(vue3) (#1803)
+- fix(build): not generate code hint files when publish-npm (#1802)
+- fix(avatar): fix src attributes default value (#1770)
+- fix(talbe): null check error (#1807)
+- fix(image-viewer): fix image src attribute error #1791 (#1819)
+- fix(date-picker): date-picker daterange panel clear value and view not updated (#1816)
+- style(date-picker): date-picker-com conditional judgment (#1823)
+- fix(docs): footer links error (#1827)
+- fix(table): fix table column rerendered whenever table updates
+
+#### Features
+
+- feat(result): new componet Result (#1818)
+
+#### Chore updares
+
+- style: using 'Array.prototype.forEach()' (#1826)
+- fix(time-picker): time picker change event bug (#1828)
+
+### 1.0.2-beta.39
+
+*2021-04-09*
+
+#### Bug fixes
+
+- Fix `packages/utils` path issue (#1792)
+
+### 1.0.2-beta.38
+
+*2021-04-08*
+
+- Fix `packages/utils` build issue caused `setConfig` not working (#1788)
+
+### 1.0.2-beta.37
+
+*2021-04-08*
+
+#### Bug fixes
+
+- Fix input prefix-icon-incorrect-height (#1766)
+- Fix select  fix filter method is not called when input first letter (#1711)
+- Fix picker add focus (#1475)
+- Fix time-select input value not changed with v-model bindings (#1725)
+- Fix tooltip component tabindex prop (#1621)
+- Fix select fix type of modelValue incompatible (#1719)
+- Fix utils isIE logic (#1757)
+- Refactor card remove needless div tag (#1732)
+- Fix input add keydown event listener for textarea (#1723)
+- Fix time-picker  update oldValue when visible change (#1635)
+- Fix drawer close button outline issue when focusing (#1727)
+
+### 1.0.2-beta.36
+
+*2021-03-28*
+
+#### Bug fixes
+
+- fix option-group error when groupQueryChange event trigger
+- fix model-value error when Slider rendered
+- fix use-lock-screen hook (#1651)
+- fix modelValue should be deep reactive in multiple mode (#1624)
+- fix not returning resetField & clearValidate methods (#1663)
+- fix bug in render column structure (#1664)
+- fix bug caused by dynamic rendering (#1640) …
+- fix tooltip's export (#1678)
+- fix should reset placeholder after clear (#1679)
+- fix image onload overridden (#1689)
+- fix #1653 (#1665)
+- fix tabindex prop (#1642)
+- fix notification css word break (#1699)
+- fix transition error trigger when fileList is static (#1686 …
+- fix error position of input and tags (#1682)
+- fix incompatible migration (#1671) …
+- fix the current row render flashing when expanding line toggle
+- fix menu component animation bug (#1690)
+- fix style of break word (#1701)
+
+#### Features
+
+- add new feature check-tag (#1696)
+
+#### Chore updates
+
+- docs update label docs of tab-pane (#1646)
+- add web-types.json (#1662)
+- chore: remove an repetitive file in .gitignore (#1673)
+- docs: Update the quickstart.md of zh-cn language (#1698)
+- docs: update on demand import docs (#1672)
+- project/bumping-vue-version (#1702)
+
+### 1.0.2-beta.35
+
+
+*2021-03-15*
+
+- Fix type generator error
+
 ### 1.0.2-beta.34
 
 *2021-03-12*
@@ -20,7 +126,7 @@
 - Fix table fix #1591 (#1593)
 - Fix radio type order (#1554)
 - Fix time-picker replace test `it.only` with `it` in test (#1586)
-- Fix popper simplify mapEvents logic & add  (#1541)
+- Fix popper simplify mapEvents logic & add PopperEvents (#1541)
 - Fix pagination component layout prop bug (#1576)
 - Fix select disabled group not works (#1559)
 - Fix dropdown dropdown will expand when unexpected (#1569)

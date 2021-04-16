@@ -7,12 +7,12 @@
             <!-- logo -->
             <slot>
               <img
-                src="../assets/images/element-plus-logo.svg"
+                src="../assets/images/mtui-logo.svg"
                 alt="element-logo"
                 class="nav-logo"
               >
               <img
-                src="../assets/images/element-plus-logo-small.svg"
+                src="../assets/images/mtui-logo-small.svg"
                 alt="element-logo"
                 class="nav-logo-small"
               >
@@ -23,7 +23,6 @@
         <!-- nav -->
         <ul class="nav">
           <li v-show="isComponentPage" class="nav-item nav-algolia-search">
-            <algolia-search />
           </li>
           <li class="nav-item">
             <router-link
@@ -58,56 +57,11 @@
 
           <!-- 版本选择器 -->
           <li v-if="false" v-show="isComponentPage" class="nav-item nav-versions">
-            <el-dropdown
-              trigger="click"
-              class="nav-dropdown"
-              :class="{ 'is-active': verDropdownVisible }"
-            >
-              <span>
-                {{ version }}
-                <i class="el-icon-arrow-down el-icon--right"></i>
-              </span>
-              <el-dropdown-menu
-                class="nav-dropdown-list"
-                @input="handleVerDropdownToggle"
-              >
-                <el-dropdown-item
-                  v-for="item in Object.keys(versions)"
-                  :key="item"
-                  @click="switchVersion(item)"
-                >
-                  {{ item }}
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </el-dropdown>
           </li>
 
           <!-- 语言选择器 -->
           <li class="nav-item lang-item">
-            <el-dropdown
-              trigger="click"
-              class="nav-dropdown nav-lang"
-              :class="{ 'is-active': langDropdownVisible }"
-            >
-              <span>
-                {{ displayedLang }}
-                <i class="el-icon-arrow-down el-icon--right"></i>
-              </span>
-              <template #dropdown>
-                <el-dropdown-menu
-                  class="nav-dropdown-list"
-                  @input="handleLangDropdownToggle"
-                >
-                  <el-dropdown-item
-                    v-for="(value, key) in langs"
-                    :key="key"
-                    @click="switchLang(key)"
-                  >
-                    {{ value }}
-                  </el-dropdown-item>
-                </el-dropdown-menu>
-              </template>
-            </el-dropdown>
+            {{ displayedLang }}
           </li>
         </ul>
       </div>
@@ -115,7 +69,6 @@
   </div>
 </template>
 <script>
-import AlgoliaSearch from './search.vue'
 import { Language } from '../enums/language'
 import compoLang from '../i18n/component.json'
 
@@ -123,9 +76,6 @@ const version = '1.0.0' // element version
 
 export default {
 
-  components: {
-    AlgoliaSearch,
-  },
   data() {
     return {
       active: '',

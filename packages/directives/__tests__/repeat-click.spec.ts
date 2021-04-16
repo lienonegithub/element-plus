@@ -1,4 +1,4 @@
-import { sleep } from '@element-plus/test-utils'
+import { sleep } from '@mtui/test-utils'
 import { mount } from '@vue/test-utils'
 import RepeatClick from '../repeat-click'
 

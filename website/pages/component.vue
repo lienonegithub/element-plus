@@ -1,23 +1,23 @@
 <template>
-  <el-scrollbar ref="componentScrollBar" class="page-component__scroll">
+  <mt-scrollbar ref="componentScrollBar" class="page-component__scroll">
     <div class="page-container page-component">
-      <el-scrollbar class="page-component__nav">
+      <mt-scrollbar class="page-component__nav">
         <side-nav :data="navsData[lang]" :base="`/${ lang }/component`" />
-      </el-scrollbar>
+      </mt-scrollbar>
       <div class="page-component__content">
         <div class="content-wrap">
           <router-view class="content" />
         </div>
-        <footer-nav />
+        <!-- <footer-nav /> -->
       </div>
-      <el-backtop
+      <mt-backtop
         v-if="showBackToTop"
-        target=".page-component__scroll .el-scrollbar__wrap"
+        target=".page-component__scroll .mt-scrollbar__wrap"
         :right="100"
         :bottom="50"
       />
     </div>
-  </el-scrollbar>
+  </mt-scrollbar>
 </template>
 <script>
 import bus from '../bus'
@@ -56,7 +56,7 @@ export default {
   },
   mounted() {
     this.componentScrollBar = this.$refs.componentScrollBar
-    this.componentScrollBox = this.componentScrollBar.$el.querySelector('.el-scrollbar__wrap')
+    this.componentScrollBox = this.componentScrollBar.$el.querySelector('.mt-scrollbar__wrap')
     this.throttledScrollHandler = throttle(300, this.handleScroll)
     this.componentScrollBox.addEventListener('scroll', this.throttledScrollHandler)
     document.body.classList.add('is-component')
@@ -130,7 +130,7 @@ export default {
 .page-component__scroll {
   height: 100%;
 
-  ::v-deep( > .el-scrollbar__wrap) {
+  ::v-deep( > .mt-scrollbar__wrap) {
     overflow-x: auto;
   }
 }
@@ -150,7 +150,7 @@ export default {
     bottom: 0;
     transition: padding-top .3s;
 
-    ::v-deep( > .el-scrollbar__wrap) {
+    ::v-deep( > .mt-scrollbar__wrap) {
       height: 100%;
       overflow-x: auto;
     }

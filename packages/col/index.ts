@@ -1,5 +1,5 @@
 import Col from './src/col'
-import type { SFCWithInstall } from '@element-plus/utils/types'
+import type { SFCWithInstall } from '@mtui/utils/types'
 
 const _Col: SFCWithInstall<typeof Col> = Col as SFCWithInstall<typeof Col>
 

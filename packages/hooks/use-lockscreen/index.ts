@@ -1,13 +1,13 @@
 import { watch, isRef, onUnmounted } from 'vue'
 
-import getScrollBarWidth from '@element-plus/utils/scrollbar-width'
-import throwError from '@element-plus/utils/error'
+import getScrollBarWidth from '@mtui/utils/scrollbar-width'
+import throwError from '@mtui/utils/error'
 import {
   addClass,
   removeClass,
   hasClass,
   getStyle,
-} from '@element-plus/utils/dom'
+} from '@mtui/utils/dom'
 
 import type { Ref } from 'vue'
 

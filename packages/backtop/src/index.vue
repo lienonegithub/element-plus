@@ -1,16 +1,16 @@
 <template>
-  <transition name="el-fade-in">
+  <transition name="mt-fade-in">
     <div
       v-if="visible"
       :style="{
         'right': styleRight,
         'bottom': styleBottom
       }"
-      class="el-backtop"
+      class="mt-backtop"
       @click.stop="handleClick"
     >
       <slot>
-        <i class="el-icon-caret-top"></i>
+        <i class="mt-icon-caret-top"></i>
       </slot>
     </div>
   </transition>
@@ -19,8 +19,8 @@
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import throttle from 'lodash/throttle'
-import { on, off } from '@element-plus/utils/dom'
-import { easeInOutCubic } from '@element-plus/utils/animation'
+import { on, off } from '@mtui/utils/dom'
+import { easeInOutCubic } from '@mtui/utils/animation'
 
 interface IElBacktopProps {
   visibilityHeight: number
@@ -30,7 +30,7 @@ interface IElBacktopProps {
 }
 
 export default defineComponent({
-  name: 'ElBacktop',
+  name: 'MtBacktop',
   props: {
     visibilityHeight: {
       type: Number,

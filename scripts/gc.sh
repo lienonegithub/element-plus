@@ -45,7 +45,7 @@ export default defineComponent({
   },
 })
 </script>
-<style scoped>
+<style>
 </style>
 EOF
 
@@ -62,12 +62,12 @@ EOF
 
 cat > $DIRNAME/package.json <<EOF
 {
-  "name": "@element-plus/$INPUT_NAME",
+  "name": "@mtui/$INPUT_NAME",
   "version": "0.0.0",
   "main": "dist/index.js",
   "license": "MIT",
   "peerDependencies": {
-    "vue": "^3.0.7"
+    "vue": "^3.0.9"
   },
   "devDependencies": {
     "@vue/test-utils": "^2.0.0-beta.3"

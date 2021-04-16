@@ -1,9 +1,9 @@
 import { nextTick } from 'vue'
 import { createLoadingComponent } from './createLoadingComponent'
 import type { ILoadingGlobalConfig, ILoadingInstance, ILoadingOptions } from './loading.type'
-import { addClass, getStyle, removeClass } from '@element-plus/utils/dom'
-import PopupManager from '@element-plus/utils/popup-manager'
-import isServer from '@element-plus/utils/isServer'
+import { addClass, getStyle, removeClass } from '@mtui/utils/dom'
+import PopupManager from '@mtui/utils/popup-manager'
+import isServer from '@mtui/utils/isServer'
 
 const defaults: ILoadingOptions = {
   parent: null,

@@ -46,9 +46,9 @@ module.exports = {
         [
           'babel-plugin-module-resolver',
           {
-            root: ['element-plus'],
+            root: ['mtui'],
             alias: {
-              '@element-plus': 'element-plus/lib',
+              '@mtui': 'mtui/lib',
             },
           },
         ],

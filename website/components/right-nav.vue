@@ -1,12 +1,12 @@
 <template>
-  <el-scrollbar
+  <mt-scrollbar
     ref="navScroll"
     class="right-nav"
     wrap-style="max-height: 300px"
     style="position: fixed;right: 10px;top: 100px;width: 150px;border-left: 1px solid rgb(220, 223, 230);height: auto;max-height: 300px;"
   >
     <div v-for="item in anchors" :key="item" style="margin: 3px 0 3px 10px">
-      <el-link
+      <mt-link
         :id="item"
         :title="item"
         class="link"
@@ -15,9 +15,9 @@
         @click="handleAnchorClick(item)"
       >
         {{ item }}
-      </el-link>
+      </mt-link>
     </div>
-  </el-scrollbar>
+  </mt-scrollbar>
 </template>
 
 <script lang="ts">
@@ -43,7 +43,7 @@ export default defineComponent({
     onMounted(async () => {
       // waiting for components render, e.g. table.
       await nextTick()
-      scrollContainer = document.querySelector('.el-scrollbar.page-component__scroll>.el-scrollbar__wrap.el-scrollbar__wrap--hidden-default')
+      scrollContainer = document.querySelector('.mt-scrollbar.page-component__scroll>.mt-scrollbar__wrap.mt-scrollbar__wrap--hidden-default')
       const content = document.querySelector('.content.element-doc.content')
       if (!content) return
       const h3 = content.querySelectorAll('h3')
@@ -56,7 +56,7 @@ export default defineComponent({
       let mapValues = Array.from(map.values()).reverse()
       let mapKeys = Array.from(map.keys()).reverse()
       resizeObserver = new ResizeObserver(() => {
-        Array.from(h3).map(item => {
+        Array.from(h3).forEach(item => {
           const text = item.childNodes[1].textContent.trim()
           map.set(text, item.offsetTop)
         })

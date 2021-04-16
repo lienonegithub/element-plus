@@ -209,11 +209,11 @@ ${this.codepen.style}
       // since 2.6.2 use code rather than jsfiddle https://blog.codepen.io/documentation/api/prefill/
       const { script, html, style } = this.codepen
       const resourcesTpl = '<scr' + 'ipt src="//unpkg.com/vue@next"></scr' + 'ipt>' +
-        '\n<scr' + `ipt src="//unpkg.com/element-plus/lib/index.full.js"></scr` + 'ipt>'
+        '\n<scr' + `ipt src="//unpkg.com/mtui/lib/index.full.js"></scr` + 'ipt>'
       let htmlTpl = `${resourcesTpl}\n<div id="app">\n${html.trim()}\n</div>`
-      let cssTpl = `@import url("//unpkg.com/element-plus/lib/theme-chalk/index.css");\n${(style || '').trim()}\n`
-      let jsTpl = script ? script.replace(/export default/, 'var Main =').trim().replace(/import ({.*}) from 'vue'/g, (s, s1) => `const ${s1} = Vue`).replace(/import ({.*}) from 'element-plus'/g, (s, s1) => `const ${s1} = ElementPlus`) : 'var Main = {}'
-      jsTpl += '\n;const app = Vue.createApp(Main);\napp.use(ElementPlus);\napp.mount("#app")'
+      let cssTpl = `@import url("//unpkg.com/mtui/lib/theme-chalk/index.css");\n${(style || '').trim()}\n`
+      let jsTpl = script ? script.replace(/export default/, 'var Main =').trim().replace(/import ({.*}) from 'vue'/g, (s, s1) => `const ${s1} = Vue`).replace(/import ({.*}) from 'mtui'/g, (s, s1) => `const ${s1} = Mtui`) : 'var Main = {}'
+      jsTpl += '\n;const app = Vue.createApp(Main);\napp.use(Mtui);\napp.mount("#app")'
       const data = {
         js: jsTpl,
         css: cssTpl,

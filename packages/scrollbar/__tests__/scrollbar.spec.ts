@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { makeScroll, defineGetter } from '@element-plus/test-utils'
+import { makeScroll, defineGetter } from '@mtui/test-utils'
 import Scrollbar from '../src/index.vue'
 
 const _mount = (template: string) => mount({

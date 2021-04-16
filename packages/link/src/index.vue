@@ -1,8 +1,8 @@
 <template>
   <a
     :class="[
-      'el-link',
-      type ? `el-link--${type}` : '',
+      'mt-link',
+      type ? `mt-link--${type}` : '',
       disabled && 'is-disabled',
       underline && !disabled && 'is-underline'
     ]"
@@ -11,7 +11,7 @@
   >
     <i v-if="icon" :class="icon"></i>
 
-    <span v-if="$slots.default" class="el-link--inner">
+    <span v-if="$slots.default" class="mt-link--inner">
       <slot></slot>
     </span>
 
@@ -24,7 +24,7 @@ import { defineComponent, PropType } from 'vue'
 type ILinkType = PropType<'primary' | 'success' | 'warning' | 'info' | 'danger' | 'default'>
 
 export default defineComponent({
-  name: 'ElLink',
+  name: 'MtLink',
   props: {
     type: {
       type: String as ILinkType,

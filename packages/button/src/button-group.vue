@@ -1,5 +1,5 @@
 <template>
-  <div class="el-button-group">
+  <div class="mt-button-group">
     <slot></slot>
   </div>
 </template>
@@ -7,6 +7,6 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'ElButtonGroup',
+  name: 'MtButtonGroup',
 })
 </script>

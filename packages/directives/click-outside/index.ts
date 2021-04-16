@@ -1,5 +1,5 @@
-import { on } from '@element-plus/utils/dom'
-import isServer from '@element-plus/utils/isServer'
+import { on } from '@mtui/utils/dom'
+import isServer from '@mtui/utils/isServer'
 import type { ComponentPublicInstance, DirectiveBinding, ObjectDirective } from 'vue'
 
 
@@ -42,7 +42,7 @@ function createDocumentHandler(
       popperRef: Nullable<HTMLElement>
     }>).popperRef
     const mouseUpTarget = mouseup.target as Node
-    const mouseDownTarget = mousedown.target as Node
+    const mouseDownTarget = mousedown?.target as Node
     const isBound = !binding || !binding.instance
     const isTargetExists = !mouseUpTarget || !mouseDownTarget
     const isContainedByEl = el.contains(mouseUpTarget) || el.contains(mouseDownTarget)

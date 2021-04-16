@@ -15,7 +15,7 @@ function compile() {
     .pipe(cssmin())
     .pipe(rename(function (path) {
       if(!noElPrefixFile.test(path.basename)) {
-        path.basename = `el-${path.basename}`
+        path.basename = `mt-${path.basename}`
       }
     }))
     .pipe(dest('./lib'))

@@ -2,4 +2,4 @@
 
 const run = require('./build');
 
-run('index.js', './packages/element-plus', true)
+run('index.js', './packages/mtui', true)

@@ -28,7 +28,7 @@ export type ILoadingInstance = {
     originalOverflow?: Ref<string>
     setText: (text: string) => void
     close: () => void
-    handleAfterLeave: () => void
+    handleAfterLeave: () => voi
     vm: VNode
     $el: HTMLElement
 }

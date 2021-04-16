@@ -17,7 +17,7 @@ const runBuild = async () => {
   const inputs = pkgs
     .map(pkg => pkg.name)
     .filter(name =>
-      name.includes('@element-plus') &&
+      name.includes('@mtui') &&
       !name.includes('utils'),
     ).slice(process.argv[2], process.argv[3])
 
@@ -26,7 +26,7 @@ const runBuild = async () => {
   async function build(name) {
     if (!name) return
     const inputOptions = {
-      input: path.resolve(__dirname, `../packages/${name.split('@element-plus/')[1]}/index.ts`),
+      input: path.resolve(__dirname, `../packages/${name.split('@mtui/')[1]}/index.ts`),
       plugins: [
         nodeResolve(),
         css(),
@@ -49,24 +49,24 @@ const runBuild = async () => {
       ],
       external(id) {
         return /^vue/.test(id)
-          || /^@element-plus/.test(id)
+          || /^@mtui/.test(id)
           || deps.some(k => new RegExp('^' + k).test(id))
       },
     }
     const getOutFile = () => {
-      const compName = name.split('@element-plus/')[1]
+      const compName = name.split('@mtui/')[1]
       if(noElPrefixFile.test(name)) {
         return `lib/${compName}/index.js`
       }
-      return `lib/el-${compName}/index.js`
+      return `lib/mt-${compName}/index.js`
     }
     const outOptions = {
       format: 'es',
       file: getOutFile(),
       paths(id) {
-        if (/^@element-plus/.test(id)) {
-          if (noElPrefixFile.test(id)) return id.replace('@element-plus', '..')
-          return id.replace('@element-plus/', '../el-')
+        if (/^@mtui/.test(id)) {
+          if (noElPrefixFile.test(id)) return id.replace('@mtui', '..')
+          return id.replace('@mtui/', '../mt-')
         }
       },
     }

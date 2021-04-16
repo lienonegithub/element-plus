@@ -16,19 +16,19 @@ const vue = require('./plugin.js')
 const inputs = getPackagesSync()
   .map(pkg => pkg.name)
   .filter(name =>
-    name.includes('@element-plus') &&
+    name.includes('@mtui') &&
     !name.includes('transition') &&
     !name.includes('utils'),
   )
 
 export default inputs.map(name => ({
-  input: path.resolve(__dirname, `../packages/${name.split('@element-plus/')[1]}/index.ts`),
+  input: path.resolve(__dirname, `../packages/${name.split('@mtui/')[1]}/index.ts`),
   output: {
     format: 'es',
-    file: `lib/${name.split('@element-plus/')[1]}/index.js`,
+    file: `lib/${name.split('@mtui/')[1]}/index.js`,
     paths(id) {
-      if (/^@element-plus/.test(id)) {
-        return id.replace('@element-plus', '..')
+      if (/^@mtui/.test(id)) {
+        return id.replace('@mtui', '..')
       }
     },
   },
@@ -63,7 +63,7 @@ export default inputs.map(name => ({
   ],
   external(id) {
     return /^vue/.test(id)
-      || /^@element-plus/.test(id)
+      || /^@mtui/.test(id)
       || deps.some(k => new RegExp('^' + k).test(id))
   },
 }))

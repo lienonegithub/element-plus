@@ -5,14 +5,6 @@
       "path": "/changelog"
     },
     {
-      "name": "Element React",
-      "href": "https://elemefe.github.io/element-react/"
-    },
-    {
-      "name": "Element Angular",
-      "href": "https://element-angular.faas.ele.me/"
-    },
-    {
       "name": "开发指南",
       "children": [
         {
@@ -196,6 +188,10 @@
             {
               "path": "/empty",
               "title": "Empty 空状态"
+            },
+            {
+              "path": "/result",
+              "title": "Result 结果"
             }
           ]
         },
@@ -514,6 +510,10 @@
             {
               "path": "/empty",
               "title": "Empty"
+            },
+            {
+              "path": "/result",
+              "title": "Result"
             }
           ]
         },
@@ -836,6 +836,10 @@
             {
               "path": "/empty",
               "title": "Empty"
+            },
+            {
+              "path": "/result",
+              "title": "Result"
             }
           ]
         },
@@ -1158,6 +1162,10 @@
             {
               "path": "/empty",
               "title": "Empty"
+            },
+            {
+              "path": "/result",
+              "title": "Result"
             }
           ]
         },
@@ -1480,6 +1488,10 @@
             {
               "path": "/empty",
               "title": "Empty"
+            },
+            {
+              "path": "/result",
+              "title": "Result"
             }
           ]
         },

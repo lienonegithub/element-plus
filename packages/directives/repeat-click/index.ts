@@ -1,4 +1,4 @@
-import { on, once } from '@element-plus/utils/dom'
+import { on, once } from '@mtui/utils/dom'
 
 import type { ObjectDirective } from 'vue'
 export default {

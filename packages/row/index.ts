@@ -1,5 +1,5 @@
 import Row from '../col/src/row'
-import type { SFCWithInstall } from '@element-plus/utils/types'
+import type { SFCWithInstall } from '@mtui/utils/types'
 
 const _Row: SFCWithInstall<typeof Row> = Row as SFCWithInstall<typeof Row>
 

@@ -3,7 +3,6 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import routes from './route.config'
 import demoBlock from './components/demo-block'
 import RightNav from './components/right-nav'
-import MainFooter from './components/footer'
 import MainHeader from './components/header'
 import SideNav from './components/side-nav'
 import FooterNav from './components/footer-nav'
@@ -18,7 +17,7 @@ import 'dayjs/locale/zh-cn'
 dayjs.locale('zh-cn') // todo: locale based on Doc site lang
 
 import App from './app.vue'
-import ElementPlus from 'element-plus'
+import Mtui from 'mtui'
 import '../packages/theme-chalk/src/index.scss'
 import '../packages/theme-chalk/src/display.scss'
 
@@ -28,7 +27,6 @@ app.config.globalProperties.$icon = icon
 
 app.component('DemoBlock', demoBlock)
 app.component('RightNav', RightNav)
-app.component('MainFooter', MainFooter)
 app.component('MainHeader', MainHeader)
 app.component('SideNav', SideNav)
 app.component('FooterNav', FooterNav)
@@ -37,7 +35,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 })
-app.use(ElementPlus)
+app.use(Mtui)
 app.use(router)
 router.isReady().then(() => {
 

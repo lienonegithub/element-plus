@@ -1,5 +1,5 @@
 import { watch } from 'vue'
-import { on, off } from '@element-plus/utils/dom'
+import { on, off } from '@mtui/utils/dom'
 
 import type { Ref } from 'vue'
 
@@ -12,11 +12,11 @@ export default (el: Ref<HTMLElement>, events: Event[]) => {
 
   watch(el, val => {
     if (val) {
-      events.map(({ name, handler }) => {
+      events.forEach(({ name, handler }) => {
         on(el.value, name, handler)
       })
     } else {
-      events.map(({ name, handler }) => {
+      events.forEach(({ name, handler }) => {
         off(el.value, name, handler)
       })
     }
