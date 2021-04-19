@@ -50,7 +50,7 @@ const MtCol = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const { gutter } = inject('ElRow', { gutter: { value: 0 } })
+    const { gutter } = inject('MtRow', { gutter: { value: 0 } })
 
     const style = computed(() => {
       if (gutter.value) {
