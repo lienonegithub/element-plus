@@ -38,7 +38,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const emptyDescription = computed(() => props.description || t('el.table.emptyText'))
+    const emptyDescription = computed(() => props.description || t('mt.table.emptyText'))
     const imageStyle = computed(() => {
       return {
         width: props.imageSize ? `${props.imageSize}px` : '',

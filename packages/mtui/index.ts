@@ -3,11 +3,15 @@ import MtBacktop from '@mtui/backtop'
 import MtButton from '@mtui/button'
 import MtCard from '@mtui/card'
 import MtCol from '@mtui/col'
+import MtDivider from '@mtui/divider'
 import MtEmpty from '@mtui/empty'
+import MtImage from '@mtui/image'
+import MtImageViewer from '@mtui/image-viewer'
 import MtLink from '@mtui/link'
 import MtLoading from '@mtui/loading'
 import MtRow from '@mtui/row'
 import MtScrollBar from '@mtui/scrollbar'
+import MtSpace from '@mtui/space'
 
 import { use, i18n } from '@mtui/locale'
 // if you encountered problems alike "Can't resolve './version'"
@@ -45,10 +49,14 @@ const components = [
   MtButton,
   MtCard,
   MtCol,
+  MtDivider,
   MtEmpty,
+  MtImage,
+  MtImageViewer,
   MtLink,
   MtRow,
   MtScrollBar,
+  MtSpace,
 ]
 
 const plugins = [
@@ -78,11 +86,15 @@ export {
   MtButton,
   MtCard,
   MtCol,
+  MtDivider,
   MtEmpty,
+  MtImage,
+  MtImageViewer,
   MtLink,
   MtLoading,
   MtRow,
   MtScrollBar,
+  MtSpace,
   version,
   install,
   locale,
